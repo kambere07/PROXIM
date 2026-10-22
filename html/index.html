@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PROXIM</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1F6;--surf:#fff;--ink:#14213D;--mute:#5B6785;--line:#D5DBE7;--pri:#0E7C7B;--onpri:#fff;--acc:#F2A541;--soft:#E1F1F0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1424;--surf:#17203A;--ink:#EAEFFA;--mute:#9AA6C4;--line:#2B3757;--pri:#39B5B3;--onpri:#06222A;--acc:#F2A541;--soft:#16373C}}
+:root[data-theme="dark"]{--bg:#0D1424;--surf:#17203A;--ink:#EAEFFA;--mute:#9AA6C4;--line:#2B3757;--pri:#39B5B3;--onpri:#06222A;--acc:#F2A541;--soft:#16373C}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.45}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto}
+.logo{font-weight:800;font-size:26px;letter-spacing:-.03em}
+.logo i{font-style:normal;color:var(--pri)}
+.logo small{display:block;font-size:13px;font-weight:400;color:var(--mute);letter-spacing:0}
+.seg{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surf)}
+.seg button{border:0;background:none;padding:9px 18px;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+main{max-width:1200px;margin:0 auto;padding:8px 24px 48px}
+.hide{display:none!important}
+.intro{max-width:640px;color:var(--mute);margin:0 0 20px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px;padding:0;list-style:none}
+.flow li{border:1.5px dashed var(--mute);border-radius:8px;padding:4px 10px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
+figure{margin:0}
+figcaption{margin-top:10px;font-size:14px;color:var(--mute);max-width:340px}
+figcaption b{display:block;color:var(--ink);font-size:16px}
+.phone{width:100%;max-width:340px;height:620px;border:2px solid var(--ink);border-radius:28px;background:var(--surf);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.scr{flex:1;overflow:auto;padding:16px 16px 12px}
+.tabs{display:flex;border-top:1.5px solid var(--line);background:var(--surf)}
+.tabs button{flex:1;border:0;background:none;padding:12px 2px;font-size:12px;color:var(--mute);font-weight:600}
+.tabs button.on{color:var(--pri);box-shadow:inset 0 3px 0 var(--pri)}
+h1,h2,h3,p{margin:0}
+h1{font-size:24px;letter-spacing:-.02em;font-weight:800}
+h2{font-size:15px;margin:18px 0 8px;font-weight:800}
+.sub{color:var(--mute);font-size:14px}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;background:var(--surf)}
+.card.hl{background:var(--soft);border-color:var(--pri)}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.ph{height:110px;border-radius:12px;background:linear-gradient(135deg,var(--pri),var(--acc));margin-bottom:10px}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--pri);color:var(--onpri);font-weight:600;font-size:14px}
+.btn.alt{background:none;border:1.5px solid var(--pri);color:var(--pri)}
+.btn.full{width:100%;margin-top:10px}
+.btn.done{background:var(--soft);color:var(--pri);border:1.5px solid var(--pri)}
+.chip{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:3px 10px;font-size:13px;margin:0 6px 6px 0;background:var(--surf);color:var(--ink)}
+button.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--acc);color:#14213D;display:grid;place-items:center;font-weight:800;flex:none}
+.av.s{width:26px;height:26px;font-size:12px;margin-left:-8px;border:2px solid var(--surf)}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0 4px}
+.bar span{display:block;height:100%;background:var(--pri)}
+.back{border:0;background:none;color:var(--pri);font-weight:600;padding:0 0 10px}
+.star{border:0;background:none;font-size:30px;color:var(--line);padding:0 2px}
+.star.on{color:var(--acc)}
+textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px;background:var(--surf);color:var(--ink);font:inherit;min-height:70px}
+.toast{position:absolute;left:16px;right:16px;bottom:70px;background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}
+.toast.show{opacity:1;transform:none}
+.proto{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;align-items:flex-start}
+.tips{max-width:300px;color:var(--mute);font-size:15px}
+.tips b{color:var(--ink)}
+.tips ol{padding-left:18px}
+/* Wireframe : monochrome, structure seule */
+.wire .phone{border-color:#777;background:#fff}
+.wire,.wire *{--surf:#fff;--ink:#222;--mute:#666;--line:#999;--pri:#555;--onpri:#222;--acc:#bbb;--soft:#eee}
+.wire .phone *{font-family:'Courier New',monospace!important;box-shadow:none!important}
+.wire .ph{background:repeating-linear-gradient(45deg,#f3f3f3 0 8px,#e4e4e4 8px 16px);border:1.5px solid #999}
+.wire .btn{background:#ddd;border:1.5px solid #666;color:#222}
+.wire .btn.alt{background:#fff}
+.wire .av{background:#ccc;color:#333}
+.wire .card.hl{background:#f2f2f2;border-color:#666}
+.wire .bar span{background:#888}
+.wire .tabs button.on{box-shadow:inset 0 3px 0 #222;color:#222}
+.wire .star{color:#bbb}
+.wire .star.on{color:#555}
+.wide{grid-column:1/-1}
+.web{border:2px solid #777;border-radius:12px;background:#fff;padding:16px;max-width:900px;font-family:'Courier New',monospace;color:#222}
+.web .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.web .box{border:1.5px solid #999;border-radius:8px;padding:10px;font-size:13px}
+.web .box b{display:block;font-size:22px}
+.bars{display:flex;align-items:flex-end;gap:8px;height:90px}
+.bars i{flex:1;background:repeating-linear-gradient(45deg,#ddd 0 6px,#bbb 6px 12px);border:1.5px solid #888}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">prox<i>i</i>m<small>La proximité devient une relation</small></div>
+  <div class="seg" role="group" aria-label="Choisir la vue">
+    <button id="bW" aria-pressed="true">1 · Wireframes</button>
+    <button id="bP" aria-pressed="false">2 · Prototype cliquable</button>
+  </div>
+</header>
+<main>
+  <section id="vW">
+    <p class="intro">MVP 1 : les 7 écrans mobiles pour les résidents et l’espace web du gestionnaire. Structure et hiérarchie uniquement, sans habillage visuel.</p>
+    <ul class="flow" aria-label="Parcours principal"><li>Accueil</li><li>Découvrir</li><li>Détail d’une activité</li><li>Rejoindre</li><li>Retour après l’activité</li><li>Tableau de bord gestionnaire</li></ul>
+    <div class="grid wire" id="gW"></div>
+  </section>
+  <section id="vP" class="hide">
+    <div class="proto">
+      <div class="phone" id="app" aria-live="polite"></div>
+      <div class="tips">
+        <p><b>Essaie ce parcours :</b></p>
+        <ol>
+          <li>Sur Accueil, ouvre le dîner de ce soir et rejoins-le.</li>
+          <li>Filtre les activités dans Découvrir.</li>
+          <li>Dis bonjour à un voisin dans Personnes.</li>
+          <li>Participe à un défi et regarde la jauge avancer.</li>
+          <li>Propose ton aide, puis laisse un retour sur l’activité.</li>
+        </ol>
+        <p style="margin-top:12px">Lien partageable : toute personne qui ouvre cette page peut tester le prototype sur mobile ou ordinateur.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+const A=[
+{t:'Dîner cuisine du monde',w:'Jeu. 19h',p:'Cuisine du bloc B',n:8,m:12,tag:'Repas',d:'Chacun apporte un plat de chez lui. On goûte, on échange les recettes.'},
+{t:'Foot à 5 sur le terrain',w:'Sam. 16h',p:'Terrain extérieur',n:6,m:10,tag:'Sport',d:'Match amical, tous niveaux. Équipes tirées au sort sur place.'},
+{t:'Révisions partagées : maths',w:'Mar. 18h',p:'Salle d’étude',n:4,m:8,tag:'Études',d:'Une heure de travail en groupe, un étudiant de L3 répond aux questions.'},
+{t:'Troc de vêtements et livres',w:'Dim. 15h',p:'Hall d’entrée',n:11,m:30,tag:'Culture',d:'Apporte ce que tu n’utilises plus, repars avec ce qui te sert.'}];
+const P=[{n:'Amina',e:'Informatique · étage 3',i:['Cuisine','Jeux vidéo','Running']},{n:'Karim',e:'Droit · étage 4',i:['Football','Cuisine']},{n:'Sofia',e:'Biologie · étage 3',i:['Running','Lecture']}];
+const C=[{t:'Étage 3 contre étage 4',s:'100 activités à faire ensemble',v:62,m:100},{t:'Zéro gaspi',s:'30 repas partagés ce mois-ci',v:18,m:30}];
+const H=[{t:'Cherche une calculatrice scientifique pour demain',w:'Amina · demande'},{t:'Propose de l’aide en anglais (niveau C1)',w:'Karim · offre'},{t:'Prête un fer à repasser',w:'Sofia · offre'}];
+const T=[['home','Accueil'],['disc','Découvrir'],['people','Personnes'],['chal','Défis'],['help','Entraide']];
+const S={tab:'home',act:0,f:'Tout',joined:{},hi:{},part:{},aid:{},extra:false,star:0,tags:{}};
+const av=n=>`<span class="av">${n[0]}</span>`;
+const prog=(v,m)=>`<div class="bar"><span style="width:${Math.round(100*v/m)}%"></span></div><span class="sub">${v} sur ${m}</span>`;
+const actCard=(a,i,st)=>`<div class="card"><div class="row"><div><b>${a.t}</b><div class="sub">${a.w} · ${a.p}</div></div><span class="chip">${a.tag}</span></div>
+<div class="row" style="margin-top:8px"><span class="sub">${a.n+(st.joined[i]?1:0)} sur ${a.m} inscrits</span><button class="btn alt" data-go="det" data-a="${i}">Voir</button></div></div>`;
+const SC={
+home:st=>`<h1>Bonjour Léa</h1><p class="sub">Résidence Les Cèdres · bloc B</p>
+<h2>Ce soir près de chez toi</h2><div class="card hl"><div class="ph"></div><b>${A[0].t}</b><div class="sub">${A[0].w} · ${A[0].p}</div>
+<button class="btn full" data-go="det" data-a="0">${st.joined[0]?'Tu es inscrit·e':'Voir et rejoindre'}</button></div>
+<h2>Défi en cours</h2><div class="card"><b>${C[0].t}</b>${prog(C[0].v+(st.part[0]?1:0),C[0].m)}</div>
+<h2>Voisins avec les mêmes intérêts</h2><div class="row" style="justify-content:flex-start">${av('A')}${av('K')}${av('S')}<button class="btn alt" data-go="people">Voir tous</button></div>
+<h2>Ton avis compte</h2><button class="btn alt full" data-go="fb">Donner un retour sur la dernière activité</button>`,
+disc:st=>`<h1>Découvrir</h1><p class="sub">Activités dans ta résidence</p><div style="margin:12px 0 4px">${['Tout','Repas','Sport','Études','Culture'].map(f=>`<button class="chip ${st.f==f?'on':''}" data-f="${f}">${f}</button>`).join('')}</div>
+${A.map((a,i)=>[a,i]).filter(([a])=>st.f=='Tout'||a.tag==st.f).map(([a,i])=>actCard(a,i,st)).join('')}`,
+det:st=>{const a=A[st.act],j=st.joined[st.act];return `<button class="back" data-go="disc">‹ Retour</button><div class="ph"></div><h1>${a.t}</h1>
+<p class="sub">${a.w} · ${a.p}</p><p style="margin:10px 0">${a.d}</p>
+<div class="row" style="justify-content:flex-start"><span style="display:flex;padding-left:8px">${['A','K','S'].map(n=>`<span class="av s">${n}</span>`).join('')}</span><span class="sub">${a.n+(j?1:0)} sur ${a.m} inscrits</span></div>
+<button class="btn full ${j?'done':''}" data-join="${st.act}">${j?'Inscrit·e · annuler':'Rejoindre l’activité'}</button>
+${j?'<button class="btn alt full" data-go="fb">Donner mon avis après l’activité</button>':''}`},
+people:st=>`<h1>Personnes</h1><p class="sub">Classées par centres d’intérêt communs avec toi</p><div style="height:10px"></div>
+${P.map((p,i)=>`<div class="card"><div class="row" style="justify-content:flex-start">${av(p.n)}<div><b>${p.n}</b><div class="sub">${p.e}</div></div></div>
+<div style="margin-top:8px">${p.i.map(x=>`<span class="chip">${x}</span>`).join('')}</div>
+<button class="btn ${st.hi[i]?'done':'alt'} full" data-hi="${i}">${st.hi[i]?'Message envoyé':'Dire bonjour'}</button></div>`).join('')}`,
+chal:st=>`<h1>Défis collectifs</h1><p class="sub">Ensemble, on avance plus vite</p><div style="height:10px"></div>
+${C.map((c,i)=>`<div class="card ${st.part[i]?'hl':''}"><b>${c.t}</b><div class="sub">${c.s}</div>${prog(c.v+(st.part[i]?1:0),c.m)}
+<button class="btn ${st.part[i]?'done':''} full" data-part="${i}">${st.part[i]?'Je participe':'Participer'}</button></div>`).join('')}`,
+help:st=>`<h1>Entraide</h1><p class="sub">Demande ou propose un coup de main</p><div style="height:10px"></div>
+${(st.extra?[{t:'Cherche un partenaire pour courir le matin',w:'Léa · demande'}]:[]).concat(H).map((h,i)=>`<div class="card"><b>${h.t}</b><div class="sub">${h.w}</div>
+${h.w.startsWith('Léa')?'':`<button class="btn ${st.aid[h.t]?'done':'alt'} full" data-aid="${h.t.replace(/"/g,'')}">${st.aid[h.t]?'Réponse envoyée':'Répondre'}</button>`}</div>`).join('')}
+<button class="btn full" data-extra="1" ${st.extra?'disabled':''}>${st.extra?'Annonce publiée':'Publier une annonce'}</button>`,
+fb:st=>`<button class="back" data-go="home">‹ Retour</button><h1>Comment était le dîner ?</h1><p class="sub">Deux minutes pour aider la résidence à s’améliorer</p>
+<div style="margin:14px 0">${[1,2,3,4,5].map(n=>`<button class="star ${st.star>=n?'on':''}" data-star="${n}" aria-label="${n} sur 5">★</button>`).join('')}</div>
+<p class="sub" style="margin-bottom:6px">Qu’as-tu aimé ?</p>${['Ambiance','Horaire','Lieu','Nouvelles rencontres'].map(x=>`<button class="chip ${st.tags[x]?'on':''}" data-tag="${x}">${x}</button>`).join('')}
+<textarea placeholder="Une idée pour la prochaine fois ?" aria-label="Commentaire"></textarea><button class="btn full" data-send="1">Envoyer mon retour</button>`
+};
+const NOTE={home:['Accueil','Priorité à l’activité du soir, au défi en cours et aux voisins proches.'],disc:['Découvrir','Liste filtrable par catégorie. Passage de la découverte à l’inscription.'],det:['Détail d’une activité','Un seul bouton clair : Rejoindre. Les inscrits rassurent.'],people:['Personnes','Voisins triés par intérêts communs, avec un premier contact en un geste.'],chal:['Défis collectifs','Jauge de progression partagée par étage ou bloc.'],help:['Entraide','Demandes et offres courtes, réponse en un tap.'],fb:['Retour après activité','Note, raisons, commentaire libre : alimente le suivi du gestionnaire.']};
+const frame=(k,st,live)=>`<div class="scr">${SC[k](st)}</div><nav class="tabs">${T.map(([id,l])=>`<button class="${(k==id||(k=='det'&&id=='disc')||(k=='fb'&&id=='home'))?'on':''}" ${live?`data-go="${id}"`:'tabindex="-1"'}>${l}</button>`).join('')}</nav>`;
+// Wireframes (statiques)
+const ws={joined:{},hi:{},part:{},aid:{},extra:false,star:3,tags:{Ambiance:1},act:0,f:'Tout'};
+document.getElementById('gW').innerHTML=Object.keys(NOTE).map(k=>`<figure><div class="phone">${frame(k,ws,false)}</div><figcaption><b>${NOTE[k][0]}</b>${NOTE[k][1]}</figcaption></figure>`).join('')+
+`<figure class="wide"><div class="web"><b>Espace gestionnaire (web) · Résidence Les Cèdres</b>
+<div class="g"><div class="box"><b>142</b>résidents actifs</div><div class="box"><b>38 %</b>participation ce mois</div><div class="box"><b>4,3 / 5</b>satisfaction moyenne</div><div class="box"><b>23</b>activités organisées</div></div>
+<div class="g"><div class="box" style="grid-column:span 2">Participation par semaine<div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:85%"></i></div></div>
+<div class="box" style="grid-column:span 2">Derniers retours<br>— « Super ambiance, plus de repas ! »<br>— « Horaire trop tardif pour le sport. »<br><u>Exporter le rapport</u></div></div></div>
+<figcaption><b>Tableau de bord gestionnaire</b>Ce que finance le client : suivre la participation, lire les retours et ajuster les activités.</figcaption></figure>`;
+// Prototype
+const app=document.getElementById('app');let tt;
+function toast(m){const t=app.querySelector('.toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1800)}
+function draw(m){app.innerHTML=frame(S.tab,S,true)+'<div class="toast" role="status"></div>';if(m)toast(m)}
+app.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;let m='';
+if(d.go){S.tab=d.go;if(d.a!==undefined)S.act=+d.a}
+else if(d.f)S.f=d.f;
+else if(d.join!==undefined){S.joined[d.join]=!S.joined[d.join];m=S.joined[d.join]?'Tu es inscrit·e. Rendez-vous '+A[S.act].w.toLowerCase()+'.':'Inscription annulée.'}
+else if(d.hi!==undefined){S.hi[d.hi]=1;m='Message envoyé à '+P[d.hi].n+'.'}
+else if(d.part!==undefined){S.part[d.part]=!S.part[d.part];m=S.part[d.part]?'Tu participes au défi.':'Participation retirée.'}
+else if(d.aid){S.aid[d.aid]=1;m='Ta réponse est envoyée.'}
+else if(d.extra){S.extra=true;m='Annonce publiée dans ta résidence.'}
+else if(d.star)S.star=+d.star;
+else if(d.tag)S.tags[d.tag]=!S.tags[d.tag];
+else if(d.send){S.tab='home';S.star=0;S.tags={};m='Merci ! Ton retour est transmis.'}
+draw(m)});
+draw();
+// Bascule de vue
+const set=w=>{vW.classList.toggle('hide',!w);vP.classList.toggle('hide',w);bW.setAttribute('aria-pressed',w);bP.setAttribute('aria-pressed',!w)};
+bW.onclick=()=>{set(true);history.replaceState(null,'','#wireframes')};bP.onclick=()=>{set(false);history.replaceState(null,'','#prototype')};
+if(location.hash==='#prototype')set(false);
+</script>
+</body>
+</html>
